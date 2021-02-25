@@ -1,0 +1,21 @@
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import news from '../pages/news/news';
+import newsDetail from '../pages/newsDetail/newsDetail';
+
+const News = createStackNavigator();
+
+const NewsRoutes: React.FC = () => (
+  <News.Navigator
+    screenOptions={{
+      headerShown: false,
+      cardStyle: { backgroundColor: '#312e38' },
+    }}
+  >
+    <News.Screen name='news' component={news} />
+    <News.Screen name='newsDetail' component={newsDetail} />
+  </News.Navigator>
+)
+
+export default NewsRoutes;
