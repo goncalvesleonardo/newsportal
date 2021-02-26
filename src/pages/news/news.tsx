@@ -1,10 +1,15 @@
 import React from 'react';
 
-import { Container } from './styles';
+import Select from '../../components/select/select';
+
+import { Container, Title } from './styles';
 
 const news: React.FC = () => {
   return (
-    <Container />
+    <Container>
+      <Title>The New York Times</Title>
+      <Select />
+    </Container>
   );
 };
 

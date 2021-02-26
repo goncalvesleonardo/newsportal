@@ -10,7 +10,7 @@ const NewsRoutes: React.FC = () => (
   <News.Navigator
     screenOptions={{
       headerShown: false,
-      cardStyle: { backgroundColor: '#312e38' },
+      cardStyle: { backgroundColor: '#FFF' },
     }}
   >
     <News.Screen name='news' component={news} />
