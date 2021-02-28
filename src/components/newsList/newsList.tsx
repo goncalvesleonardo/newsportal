@@ -8,13 +8,13 @@ import { Container, Card } from "../newsList/styles";
 
 const newsList = () => {
   const navigation = useNavigation();
-  const [isArts, setIsArts] = useState(true);
+  const [isScience, setIsScience] = useState(true);
   const [isTechnology, setIsTechnology] = useState(true);
   const [news, setNews] = useState([]);
 
   useEffect(() => {
     getNews();
-  }, [isArts, isTechnology])
+  }, [isScience, isTechnology])
 
   const showDetail = (news) => {
     navigation.navigate('newsDetail', { news: news });
@@ -23,13 +23,13 @@ const newsList = () => {
   const getNews = async () => {
     setNews([]);
     try {
-      let arts = [];
+      let science = [];
       let technology = [];
-      if (isArts) {
-        await api.get('/arts.json', { params: {
+      if (isScience) {
+        await api.get('/science.json', { params: {
           'api-key': apiKey
         }}).then(response => {
-          arts = response.data.results;
+          science = response.data.results;
         });
       }
 
@@ -41,7 +41,7 @@ const newsList = () => {
         });
       }
 
-      setNews(news.concat(arts, technology));
+      setNews(news.concat(science, technology));
     } catch (error) {}
   }
 
@@ -49,10 +49,10 @@ const newsList = () => {
     <Container>
       <View>
         <CheckBox
-          value={isArts}
-          onValueChange={setIsArts}
+          value={isScience}
+          onValueChange={setIsScience}
         />
-        <Text>Arts</Text>
+        <Text>Science</Text>
       </View>
       <View>
         <CheckBox
