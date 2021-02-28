@@ -1,12 +1,24 @@
 import React from 'react';
+import { Platform } from 'react-native';
 
-import { Container } from './styles';
+import { Container, KeyboardAvoidingView, Card, Title, Text } from './styles';
+
 
 const news = ({ route}) => {
   const { news } = route.params;
   console.tron.log('news.title, news.abstract, news.url', news);
   return (
-    <Container />
+    <Container>
+      <KeyboardAvoidingView
+        enabled
+      >
+        <Card>
+          <Title>{news.title}</Title>
+          <Text>{news.abstract}</Text>
+          <Text>{news.url}</Text>
+        </Card>
+      </KeyboardAvoidingView>
+    </Container>
   );
 };
 
