@@ -1,14 +1,20 @@
 import React from 'react';
 
-import Select from '../../components/select/select';
+import NewsList from '../../components/newsList/newsList';
+import '../../config/ReactotronConfig';
 
 import { Container, Title } from './styles';
+declare global {
+  interface Console {
+      tron: any
+  }
+}
 
 const news: React.FC = () => {
   return (
     <Container>
       <Title>The New York Times</Title>
-      <Select />
+      <NewsList />
     </Container>
   );
 };
