@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import NewsList from '../../components/newsList/newsList';
 import '../../config/ReactotronConfig';
@@ -10,7 +10,7 @@ declare global {
   }
 }
 
-const news: React.FC = () => {
+const news = () => {
   return (
     <Container>
       <Title>The New York Times</Title>

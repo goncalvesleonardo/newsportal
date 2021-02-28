@@ -6,7 +6,7 @@ import api, { apiKey } from '../../services/api';
 
 import { Container, Card } from "../newsList/styles";
 
-const App = () => {
+const newsList = () => {
   const navigation = useNavigation();
   const [isArts, setIsArts] = useState(true);
   const [isTechnology, setIsTechnology] = useState(true);
@@ -75,4 +75,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default newsList;

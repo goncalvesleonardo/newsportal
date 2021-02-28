@@ -1,8 +1,6 @@
 import React from 'react';
-import { Platform } from 'react-native';
 
 import { Container, KeyboardAvoidingView, Card, Title, Text } from './styles';
-
 
 const news = ({ route}) => {
   const { news } = route.params;
