@@ -6,7 +6,7 @@ import newsDetail from '../pages/newsDetail/newsDetail';
 
 const News = createStackNavigator();
 
-const NewsRoutes: React.FC = () => (
+const NewsRoutes = () => (
   <News.Navigator
     screenOptions={{
       headerShown: false,
