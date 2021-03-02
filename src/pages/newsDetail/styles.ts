@@ -2,27 +2,11 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
-  align-items: center;
-  justify-content: center;
 `;
 
-export const KeyboardAvoidingView = styled.KeyboardAvoidingView`
-  align-self: stretch;
-`;
-
-export const Card = styled.View`
-  padding: 2%;
-  background-color: #FFF;
-  height: 80%;
-  margin-left: 20px;
-  margin-right: 20px;
-  align-self: stretch;
-  elevation: 9;
-  border-width: 1px;
-  border-color: #000;
-  align-items: center;
-  border-radius: 10px;
-  justify-content: center;
+export const ScrollView = styled.ScrollView`
+  width: 100%;
+  padding: 10px 10px;
 `;
 
 export const Title = styled.Text`

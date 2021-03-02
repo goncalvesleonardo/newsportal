@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { CheckBox, Text, View, ScrollView} from "react-native";
+import { CheckBox, StyleSheet } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 import api, { apiKey } from '../../services/api';
 
-import { Container, Card } from "../newsList/styles";
+import { Container, Card, ContainerCategories, View, TextCard, Text, ListNews } from "../newsList/styles";
 
 const newsList = () => {
   const navigation = useNavigation();
   const [isScience, setIsScience] = useState(true);
   const [isTechnology, setIsTechnology] = useState(true);
   const [news, setNews] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [msgLoading] = useState('Loading...');
 
   useEffect(() => {
     getNews();
@@ -21,8 +24,8 @@ const newsList = () => {
   }
 
   const getNews = async () => {
-    setNews([]);
-    try {
+      setLoading(true);
+      setNews([]);
       let science = [];
       let technology = [];
       if (isScience) {
@@ -41,36 +44,55 @@ const newsList = () => {
         });
       }
 
-      setNews(news.concat(science, technology));
-    } catch (error) {}
+      if (isScience || isTechnology) {
+        let newsSelected = [];
+        technology.map((tech) => {
+          newsSelected.push(tech);
+        })
+
+        science.map((science) => {
+          newsSelected.push(science);
+        })
+
+        setNews(newsSelected);
+        setLoading(false);
+      }
+      setLoading(false);
   }
 
   return (
     <Container>
-      <View>
-        <CheckBox
-          value={isScience}
-          onValueChange={setIsScience}
-        />
-        <Text>Science</Text>
-      </View>
-      <View>
-        <CheckBox
-          value={isTechnology}
-          onValueChange={setIsTechnology}
-        />
-        <Text>Technology</Text>
-      </View>
-      <ScrollView>
-        {news.map((news) => {
+      <Spinner visible={loading} textContent={msgLoading} textStyle={{color: '#000'}} />
+      <ContainerCategories>
+        <View>
+          <CheckBox
+            value={isScience}
+            onValueChange={setIsScience}
+          />
+          <Text>Science</Text>
+        </View>
+        <View>
+          <CheckBox
+            value={isTechnology}
+            onValueChange={setIsTechnology}
+          />
+          <Text>Technology</Text>
+        </View>
+      </ContainerCategories>
+      {isScience || isTechnology ? (
+        <ListNews>
+        {news.map((news, index) => {
           return (
-            <Card onPress={() => showDetail(news)}>
-              <Text>{news.title}</Text>
+            <Card key={index} onPress={() => showDetail(news)}>
+              <TextCard>{news.title}</TextCard>
             </Card>
           )
         })
         }
-      </ScrollView>
+      </ListNews>
+      ) : (
+        <Text>Select a category</Text>
+      )}
     </Container>
   );
 };
