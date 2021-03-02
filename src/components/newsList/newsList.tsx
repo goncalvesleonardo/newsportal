@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { CheckBox, StyleSheet } from "react-native";
+import CheckBox from '@react-native-community/checkbox';
 import { useNavigation } from '@react-navigation/native';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 import api, { apiKey } from '../../services/api';
 
-import { Container, Card, ContainerCategories, View, TextCard, Text, ListNews } from "../newsList/styles";
+import { Container, Card, ContainerCategories, View, TextCard, Text, ListNews, TextNotSelected } from "../newsList/styles";
 
 const newsList = () => {
   const navigation = useNavigation();
@@ -91,7 +91,7 @@ const newsList = () => {
         }
       </ListNews>
       ) : (
-        <Text>Select a category</Text>
+        <TextNotSelected>Select a category...</TextNotSelected>
       )}
     </Container>
   );

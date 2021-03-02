@@ -2,9 +2,8 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
-  align-items: center;
-  justify-content: center;
   width: 100%;
+  align-items: flex-start;
 `;
 
 export const Card = styled.TouchableOpacity`
@@ -40,8 +39,9 @@ export const ListNews = styled.ScrollView`
 export const ContainerCategories = styled.View`
   margin-top: 10px;
   align-items: center;
-  justify-content: center;
   flex-direction: row;
+  justify-content: center;
+  width: 100%;
 `;
 
 export const View = styled.View`
@@ -49,4 +49,13 @@ export const View = styled.View`
   justify-content: center;
   align-items: center;
   margin: 0 15px;
+`;
+
+export const TextNotSelected = styled.Text`
+  margin-top: 10px;
+  font-size: 16px;
+  color: #000;
+  font-family: 'RobotoSlab-Regular';
+  text-align: center;
+  width: 100%;
 `;
